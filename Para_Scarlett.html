@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d25">
+<title>Para Scarlett ✨</title>
+<style>
+  :root { color-scheme: dark; --pink:#ffb6d9; --lav:#c9c4ff; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; min-height:100%; }
+  body {
+    min-height:100svh; overflow-x:hidden; color:#fff5ff;
+    font-family: ui-rounded, "Trebuchet MS", system-ui, sans-serif;
+    background: radial-gradient(ellipse at 50% 15%, #25285b 0%, #111735 42%, #070a1c 100%);
+    display:grid; place-items:center; padding:24px 16px;
+  }
+  #sky { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .glow { position:fixed; width: min(80vw,500px); height:min(80vw,500px); border-radius:50%;
+    background:#9b8cff; filter:blur(100px); opacity:.12; top:-220px; left:50%; transform:translateX(-50%); pointer-events:none; }
+  main { position:relative; z-index:1; width:min(100%, 480px); text-align:center; padding:26px 22px 30px;
+    border:1px solid rgba(255,255,255,.16); border-radius:30px;
+    background:linear-gradient(160deg,rgba(35,40,85,.56),rgba(10,13,35,.62));
+    box-shadow:0 24px 80px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.08);
+    backdrop-filter:blur(10px); animation:appear 1.2s ease both;
+  }
+  .eyebrow { letter-spacing:.22em; text-transform:uppercase; color:#c9c9f9; font-size:.7rem; margin:0 0 18px; }
+  .moon-wrap { position:relative; height:142px; display:grid; place-items:center; margin:0 auto 8px; }
+  .moon { width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg,#fffbe9,#e6dfff 72%);
+    box-shadow:0 0 28px #fff4d866,0 0 75px #c4baff44; position:relative; animation:float 5s ease-in-out infinite; }
+  .moon:after { content:""; position:absolute; width:90px; height:90px; border-radius:50%; background:#252858;
+    top:-8px; left:24px; }
+  .orbit { position:absolute; width:150px; height:150px; border:1px solid #e6ddff2b; border-radius:50%; animation:spin 18s linear infinite; }
+  .orbit:before { content:"✦"; position:absolute; top:13px; right:12px; color:#ffd7ec; font-size:17px; }
+  h1 { font-size:clamp(2rem, 9vw, 3rem); line-height:1.1; margin:8px 0 12px; font-weight:750; letter-spacing:-.04em;
+    background:linear-gradient(100deg,#fff,#ffd9ee 45%,#c8c7ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .message { font-size:clamp(1.05rem,4.5vw,1.25rem); line-height:1.7; color:#f7eaff; margin:0 auto 22px; max-width:330px; }
+  .sparkle { display:inline-block; animation:twinkle 2s ease-in-out infinite; }
+  .actions { display:flex; flex-direction:column; gap:11px; align-items:center; }
+  button { width:100%; max-width:290px; border:0; border-radius:999px; padding:14px 18px; font:inherit; font-weight:700;
+    cursor:pointer; transition:transform .2s ease,filter .2s ease; -webkit-tap-highlight-color:transparent; }
+  button:active { transform:scale(.97); }
+  .primary { color:#281632; background:linear-gradient(100deg,#ffd3e8,#d9d3ff); box-shadow:0 8px 24px #d2b6ff2b; }
+  .secondary { color:#f6eaff; background:#ffffff0c; border:1px solid #ffffff35; }
+  #reveal { display:none; margin:18px auto 0; padding:16px; border-radius:18px; color:#ffe8f4; background:#ffffff0b;
+    border:1px solid #ffffff1a; line-height:1.7; animation:appear .5s ease both; }
+  #reveal.show { display:block; }
+  .footer { margin:22px 0 0; font-size:.75rem; color:#b9b9dc; }
+  .heart { position:fixed; z-index:2; pointer-events:none; font-size:22px; animation:rise 2.6s ease-out forwards; }
+  .wish { position:fixed; z-index:3; left:50%; top:17%; transform:translateX(-50%); font-size:clamp(1.2rem,5vw,1.7rem);
+    font-weight:800; color:#ffe1f0; text-shadow:0 0 22px #ffaddb; text-align:center; width:90%; animation:wish 2.4s ease forwards; pointer-events:none; }
+  @keyframes appear { from {opacity:0; transform:translateY(14px) scale(.98)} to {opacity:1; transform:translateY(0) scale(1)} }
+  @keyframes float { 0%,100% {transform:translateY(0)} 50% {transform:translateY(-8px)} }
+  @keyframes spin { to {transform:rotate(360deg)} }
+  @keyframes twinkle { 0%,100% {opacity:.55; transform:scale(.9)} 50% {opacity:1; transform:scale(1.15)} }
+  @keyframes rise { 0% {opacity:0; transform:translateY(0) scale(.7) rotate(0)} 15% {opacity:1} 100% {opacity:0; transform:translateY(-75vh) scale(1.5) rotate(25deg)} }
+  @keyframes wish { 0% {opacity:0; transform:translate(-50%,12px) scale(.9)} 15%,75% {opacity:1; transform:translate(-50%,0) scale(1)} 100% {opacity:0; transform:translate(-50%,-12px) scale(1.05)} }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas><div class="glow" aria-hidden="true"></div>
+<main>
+  <p class="eyebrow">Un pedacito de universo para ti</p>
+  <div class="moon-wrap" aria-hidden="true"><div class="orbit"></div><div class="moon"></div></div>
+  <h1>Scarlett <span class="sparkle">✦</span></h1>
+  <p class="message">Mi princesa de ojos cafés<br><strong>te amo 💕</strong></p>
+  <div class="actions">
+    <button class="primary" id="surprise">Toca aquí, mi princesa ✨</button>
+    <button class="secondary" id="stars">Llenar el cielo de amor 💗</button>
+  </div>
+  <div id="reveal" role="status" aria-live="polite">Si pudiera regalarte una estrella, elegiría una que brillara tanto como la alegría que traes a mi vida. Esta noche, que el cielo te recuerde lo especial que eres. 🌙💖</div>
+  <p class="footer">Hecho con cariño, bajo el mismo cielo 🌙</p>
+</main>
+<script>
+(() => {
+  const canvas = document.getElementById('sky');
+  const ctx = canvas.getContext('2d');
+  let w, h, dpr, stars = [];
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+    canvas.style.width = w+'px'; canvas.style.height = h+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    stars = Array.from({length: Math.min(170, Math.floor(w*h/4500))}, () => ({
+      x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.4+.25,
+      phase:Math.random()*Math.PI*2, speed:Math.random()*.018+.004
+    }));
+  }
+  function draw() {
+    ctx.clearRect(0,0,w,h);
+    const t = performance.now()*.001;
+    for (const s of stars) {
+      const a = .35 + .65*(.5 + .5*Math.sin(t*s.speed*35+s.phase));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(255,245,255,${a})`; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); draw(); window.addEventListener('resize',resize,{passive:true});
+
+  function hearts(count=18) {
+    const symbols = ['💗','💕','✨','♡','🌟'];
+    for (let i=0;i<count;i++) {
+      const el = document.createElement('span');
+      el.className='heart'; el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left=(8+Math.random()*84)+'vw';
+      el.style.top=(58+Math.random()*30)+'vh';
+      el.style.animationDelay=(Math.random()*.65)+'s';
+      el.style.fontSize=(16+Math.random()*19)+'px';
+      document.body.appendChild(el);
+      el.addEventListener('animationend',()=>el.remove(),{once:true});
+    }
+  }
+  document.getElementById('surprise').addEventListener('click',()=>{
+    const box=document.getElementById('reveal');
+    box.classList.toggle('show');
+    document.getElementById('surprise').textContent=box.classList.contains('show')?'Un abrazo hasta la luna 🌙':'Toca aquí, mi princesa ✨';
+    hearts(22);
+  });
+  document.getElementById('stars').addEventListener('click',()=>{
+    hearts(38);
+    const el=document.createElement('div'); el.className='wish';
+    el.textContent='Eres mi estrella favorita, Scarlett 💖';
+    document.body.appendChild(el);
+    el.addEventListener('animationend',()=>el.remove(),{once:true});
+  });
+})();
+</script>
+</body>
+</html>
